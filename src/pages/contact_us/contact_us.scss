@@ -1,0 +1,122 @@
+page-contact_us {
+  .header.theme_header {
+    .toolbar .title .toolbar-title p {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+
+    .row {
+      margin: 0 -10px;
+      position: relative;
+      z-index: 99;
+      background: darken($item-bg, 10%);
+
+      .col {
+        .button.btn {
+          height: 55px;
+
+          ion-icon {
+            top: 1px;
+            font-size: 2rem;
+            margin: 0 13px;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+
+  .scroll-content {
+    background: $item-bg;
+  }
+
+  .form {
+    background: none;
+    padding-top: 25px;
+
+    h2 {
+      margin: 0;
+      font-size: 3.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: $white;
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: $info;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .list {
+      margin-top: 25px;
+    }
+
+    .item {
+      margin-bottom: 16px;
+
+      .item-inner .label {
+        margin-bottom: 0;
+      }
+
+      &.item-textarea {
+        .input-wrapper {
+          display: block;
+
+          .label {
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+          }
+
+          ion-textarea {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-top: 0px;
+            min-height: unset;
+            height: 90px;
+            padding: 0;
+
+            .text-input {
+              font-size: 2rem;
+              font-weight: 500;
+              width: 100%;
+              margin: 0;
+              //color: $gray;
+              height: 90px;
+            }
+
+            ::-webkit-input-placeholder {
+              font-size: 2.1rem;
+              color: $gray;
+            }
+
+            ::-moz-placeholder {
+              font-size: 2.1rem;
+              color: $gray;
+            }
+
+            :-ms-input-placeholder {
+              font-size: 2.1rem;
+              color: $gray;
+            }
+
+            :-moz-placeholder {
+              font-size: 2.1rem;
+              color: $gray;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    .button.btn {
+      height: 55px;
+    }
+  }
+}

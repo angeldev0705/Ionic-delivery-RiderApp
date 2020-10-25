@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			{{'change_language' | translate}}
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg-color">
+	<ion-list no-lines radio-group [(ngModel)]="defaultLanguageCode" required>
+		<ion-item *ngFor="let language of config.availableLanguages" (click)="onLanguageClick(language)">
+			<ion-label>
+				<h3>{{language.name}}</h3>
+				<ion-icon name="md-globe"></ion-icon>
+			</ion-label>
+			<ion-radio value="{{language.code}}"></ion-radio>
+		</ion-item>
+	</ion-list>
+</ion-content>
+<ion-footer no-border>
+	<button ion-button full no-margin class="btn" (click)="languageConfirm()">
+		{{"save" | translate}}
+	</button>
+</ion-footer>

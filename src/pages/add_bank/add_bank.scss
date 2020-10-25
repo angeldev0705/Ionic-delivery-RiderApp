@@ -1,0 +1,30 @@
+page-add_bank {
+    .header.theme_header .toolbar .title .toolbar-title {
+        img {
+            width: 100px;
+            margin-bottom: 22px;
+            margin-top: 16px;
+            display: block;
+        }
+    }
+
+    .form {
+        margin-top: 20px;
+
+        .list {
+            padding-bottom: 25px;
+            padding-top: 20px;
+
+            .item {
+                margin-bottom: 20px;
+            }
+        }
+
+    }
+
+    .footer {
+        .button.btn {
+            height: 55px;
+        }
+    }
+}

@@ -1,0 +1,2 @@
+<preference name="android-targetSdkVersion" value="28" />
+add this android:usesCleartextTraffic="true" in application tag in AndroidManifest.xml

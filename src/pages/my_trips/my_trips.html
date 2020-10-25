@@ -1,0 +1,61 @@
+<ion-header class="theme_header">
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			<h2>{{'my_rides' | translate}}</h2>
+			<p>{{'list_of_rides' | translate}}</p>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+	<div class="empty-view" *ngIf="!isLoading && (!rides || !rides.length)">
+		<div style="text-align:center">
+			<img src="assets/imgs/empty_list.png" alt="no offers" />
+			<span style="color:#9E9E9E; font-weight:bold;">
+				{{'empty_rides' | translate}}
+			</span>
+		</div>
+	</div>
+	<ion-list no-lines>
+		<ion-item class="animated slideInRight" *ngFor="let ride of rides" (click)="tripInfo(ride)">
+			<div class="item_header d-flex">
+				<div class="img_box center_img">
+					<img *ngIf="!ride.user.image_url || !ride.user.image_url.length" src="assets/imgs/empty_dp.png"
+						class="crop_img">
+					<img *ngIf="ride.user.image_url && ride.user.image_url.length" data-src="{{ride.user.image_url}}"
+						class="crop_img">
+				</div>
+				<div class="profile_details">
+					<h3 class="d-flex">
+						{{ride.user.name}}
+						<span class="end" *ngIf="!ride.final_fare || ride.final_fare==0">{{currency}}
+							{{ride.estimated_fare}}
+						</span>
+						<span class="end" *ngIf="ride.final_fare && ride.final_fare>0">{{currency}} {{ride.final_fare}}
+						</span>
+
+					</h3>
+					<h4 class="d-flex">{{ride.created_at}}
+						<span class="end" style="text-transform: capitalize;">{{ride.status}}</span>
+					</h4>
+				</div>
+			</div>
+			<div class="rides_details">
+				<div class="d-flex item_box">
+					<ion-icon class="material-icons">location_on</ion-icon>
+					<h6>{{ride.address_from}}</h6>
+				</div>
+				<div class="d-flex item_box">
+					<ion-icon class="material-icons">near_me</ion-icon>
+					<h6>{{ride.address_to}}</h6>
+				</div>
+			</div>
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,106 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{'insight' | translate}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+	<ion-card>
+		<ion-item>
+			<ion-select interface="popover" [(ngModel)]="duration" (ionChange)="loadInsights()">
+				<ion-option value="today">{{'today' | translate}}</ion-option>
+				<ion-option value="week">{{'last_week' | translate}}</ion-option>
+				<ion-option value="month">{{'last_month' | translate}} </ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-row *ngIf="insights">
+			<ion-col col-8>
+				<h2>{{insights.total_rides}}</h2>
+				<h3>{{'rides' | translate}}</h3>
+			</ion-col>
+			<ion-col col-4>
+				<h2>{{currency}} {{insights.total_earnings}}</h2>
+				<h3>{{'earnings' | translate}}</h3>
+			</ion-col>
+		</ion-row>
+		<div *ngIf="insights && insights.chart_data && insights.chart_data.length" class="card_containt">
+			<h1>{{'earnings' | translate}}</h1>
+			<div class="graph_container d-flex">
+				<div class="text_container">
+					<p *ngFor="let pr of priceRange" class="ion-text-end"><span>{{pr}}</span></p>
+				</div>
+				<div class="graph end">
+					<div *ngFor="let cd of chartDataParsed" class="bar_box">
+						<h4>{{cd.date}}</h4>
+						<div class="bar" [style.height]="cd.percent+'%'">
+							<h5>{{cd.price}}</h5>
+						</div>
+					</div>
+					<!-- <div class="bar_box bg_white">
+						<h4>14:00</h4>
+						<div class="bar" style="height:49%;">
+							<h5>$ 140.50</h5>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<h3 text-center (click)="transactions()">{{'view_all_trasactions' | translate}}</h3>
+		</div>
+	</ion-card>
+
+	<ion-card class="rating_graph">
+		<div class="card_header">
+			<h2>{{'current_ratings' | translate}}</h2>
+			<p class="d-flex">
+				<ion-badge>
+					{{userMe.ratings}}
+					<ion-icon class="material-icons">star</ion-icon>
+				</ion-badge>
+				{{userMe.ratingscount}} {{'people_rated' | translate}}
+			</p>
+		</div>
+		<div class="card_containt">
+			<ion-row>
+				<ion-col col-7>
+					<canvas height="250" #doughnutCanvas></canvas>
+				</ion-col>
+				<ion-col col-5>
+					<h2 class="d-flex">
+						<ion-badge style="background: #148d00"> 5.0 <ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						&nbsp;&nbsp;
+						{{labelsToShow[0].total}} <strong> {{labelsToShow[0].percent}}</strong>
+					</h2>
+					<h2 class="d-flex">
+						<ion-badge style="background: #2687cc"> 4.0 <ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						&nbsp;&nbsp;
+						{{labelsToShow[1].total}} <strong> {{labelsToShow[1].percent}}</strong>
+					</h2>
+					<h2 class="d-flex">
+						<ion-badge style="background: #fdb036"> 3.0 <ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						&nbsp;&nbsp;
+						{{labelsToShow[2].total}} <strong> {{labelsToShow[2].percent}}</strong>
+					</h2>
+					<h2 class="d-flex">
+						<ion-badge style="background: #ee4300"> 2.0 <ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						&nbsp;&nbsp;
+						{{labelsToShow[3].total}} <strong> {{labelsToShow[3].percent}}</strong>
+					</h2>
+					<h2 class="d-flex">
+						<ion-badge style="background: #9e0b0f"> 1.0 <ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						&nbsp;&nbsp;
+						{{labelsToShow[4].total}} <strong> {{labelsToShow[4].percent}}</strong>
+					</h2>
+				</ion-col>
+			</ion-row>
+			<h3 text-center (click)="reviews()">{{'read_all_reviews' | translate}}</h3>
+		</div>
+	</ion-card>
+</ion-content>

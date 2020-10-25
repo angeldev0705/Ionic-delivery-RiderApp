@@ -1,0 +1,52 @@
+<ion-header class="theme_header">
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title *ngIf="user && user.ratingscount && user.ratings">
+			<h3 text-uppercase>{{'current_rating' | translate}}</h3>
+			<p class="d-flex">
+				<ion-badge>{{user.ratings}}
+					<ion-icon class="material-icons animated shake delay_8 zoomIn">star</ion-icon>
+				</ion-badge>
+				<span>
+					{{user.ratingscount}} {{'people_rated' | translate}}
+				</span>
+			</p>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+	<div class="empty-view" *ngIf="!isLoading && (!reviews || !reviews.length)">
+		<div style="text-align:center">
+			<img src="assets/imgs/empty_list.png" alt="no offers" />
+			<span style="color:#9E9E9E; font-weight:bold;">{{'no_reviews_to_show' | translate}}</span>
+		</div>
+	</div>
+	<ion-list no-lines>
+		<h2 *ngIf="rating && reviews && reviews.length">{{'recent_ratings' | translate}}</h2>
+		<ion-item class="animated slideInRight" *ngFor="let review of reviews">
+			<div class="item_header d-flex">
+				<div class="img_box center_img">
+					<img *ngIf="review.rating_from && review.rating_from.image_url"
+						data-src="{{review.rating_from.image_url}}" class="crop_img">
+					<img *ngIf="!review.rating_from || !review.rating_from.image_url" src="assets/imgs/empty_dp.png"
+						class="crop_img">
+				</div>
+				<div class="profile_details">
+					<h3 class="d-flex">{{review.rating_from.name}}
+						<ion-badge class="end">{{review.rating}}
+							<ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+					</h3>
+					<h4 class="d-flex">{{review.created_at}}</h4>
+				</div>
+			</div>
+			<p>{{review.review}}</p>
+		</ion-item>
+	</ion-list>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

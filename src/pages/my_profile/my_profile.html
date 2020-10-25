@@ -1,0 +1,83 @@
+<ion-header class="theme_header">
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			<h2>{{'my_profile' | translate}}</h2>
+			<p>{{'your_account_details' | translate}}</p>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+	<div class="form">
+		<div class="profile_img_box d-flex" (click)="pickImage(1)">
+			<div class="img_box center_img">
+				<img *ngIf="!profile.user || !profile.user.image_url || !profile.user.image_url.length" src="assets/imgs/empty_dp.png" class="crop_img">
+				<img *ngIf="profile.user && profile.user.image_url && profile.user.image_url.length" data-src="{{profile.user.image_url}}" class="crop_img">
+			</div>
+			<h3 class="d-flex">
+				<ion-icon class="material-icons">photo_camera</ion-icon>
+				{{'change_picture' | translate}}
+			</h3>
+		</div>
+		<ion-list class="personal_info" no-lines>
+
+			<ion-item>
+				<h4>{{'phone_number' | translate}}</h4>
+				<h5>{{profile.user.mobile_number}}</h5>
+			</ion-item>
+
+			<ion-item>
+				<h4>{{'full_name' | translate}}</h4>
+				<h5>{{profile.user.name}}</h5>
+			</ion-item>
+
+			<ion-item>
+				<h4>{{'email_address' | translate}}</h4>
+				<h5>{{profile.user.email}}</h5>
+			</ion-item>
+		</ion-list>
+	</div>
+
+	<div class="form car_info">
+		<ion-list no-lines>
+			<h2>{{'car_info' | translate}}</h2>
+			<ion-item>
+				<ion-label>{{'car_category' | translate}}</ion-label>
+				<ion-select [(ngModel)]="profile.vehicle_type_id" placeholder="{{'select_car_category' | translate}}">
+					<ion-option *ngFor="let cat of vehicleTypes" [value]="cat.id">{{cat.title}}</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{'car_brand' | translate}}</ion-label>
+				<ion-input type="text" placeholder="..." [(ngModel)]="profile.vehicle_details_array[0]"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{'car_model' | translate}}</ion-label>
+				<ion-input type="text" placeholder="..." [(ngModel)]="profile.vehicle_details_array[1]"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>{{'vehicle_number' | translate}}</ion-label>
+				<ion-input type="text" placeholder="..." [(ngModel)]="profile.vehicle_details_array[2]"></ion-input>
+			</ion-item>
+		</ion-list>
+	</div>
+
+	<div class="form car_info document" (click)="pickImage(2)">
+		<ion-list no-lines>
+			<h2>{{ (profile.document_url ? 'doc_uploaded' : 'doc_uploaded_not') | translate }}</h2>
+			<ion-item>
+				<ion-label>{{'document_info' | translate}}</ion-label>
+				<!-- <p></p> -->
+				<!-- <ion-icon class="material-icons" item-end>get_app</ion-icon> -->
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>
+<ion-footer no-border>
+	<button ion-button full no-margin text-uppercase class="btn" (click)="save()">
+		{{'update_info' | translate}}
+	</button>
+</ion-footer>

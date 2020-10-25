@@ -1,0 +1,63 @@
+<!--
+<ion-header class="bg-theme">
+	<ion-navbar>
+		<ion-title>{{'send_to_bank' | translate}}</ion-title>
+	</ion-navbar>
+</ion-header>
+-->
+
+<ion-header class="theme_header">
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>
+			<p>{{'avsilble_wallet_blance' | translate}}</p>
+			<h2>{{currency}} {{balance}}</h2>
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+	<!--
+	<div class="banner">
+		<h2>{{'avsilble_wallet_blance' | translate}}</h2>
+		<h1>{{currency}} {{balance}}</h1>
+	</div>
+-->
+	<div class="form">
+		<ion-list no-lines>
+			<!--			<h2>{{'enter_bank_info' | translate}}</h2>-->
+			<div class="form_container">
+				<ion-item>
+					<ion-label floating>{{"bank_name" | translate}}</ion-label>
+					<ion-input type="text" [(ngModel)]="bankDetail.bank_name"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"account_number" | translate}}</ion-label>
+					<ion-input type="number" [(ngModel)]="bankDetail.account_number"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label floating>{{"bank_code" | translate}}</ion-label>
+					<ion-input type="text" [(ngModel)]="bankDetail.ifsc"></ion-input>
+				</ion-item>
+			</div>
+		</ion-list>
+	</div>
+	<div class="form transfer_amount">
+		<ion-list no-lines class="transfer_amount">
+			<div class="form_container">
+				<ion-item>
+					<ion-label floating>{{"enter_amount_transfer_in" | translate}}</ion-label>
+					<ion-input type="number" [(ngModel)]="amount"></ion-input>
+				</ion-item>
+			</div>
+		</ion-list>
+	</div>
+</ion-content>
+
+<ion-footer no-border>
+	<button ion-button full no-margin text-uppercase item-start class="btn" (click)="confirm()">
+		{{'proceed' | translate}}
+	</button>
+</ion-footer>

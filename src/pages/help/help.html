@@ -1,0 +1,29 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <h2>{{'faqs' | translate}}</h2>
+            <p>{{'read_faqs_solutions' | translate}}</p>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+    <div class="empty-view" *ngIf="!isLoading && (!faqs || !faqs.length)">
+        <div style="text-align:center">
+            <img src="assets/imgs/empty_list.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">{{'no_faqs_to_show' | translate}}</span>
+        </div>
+    </div>
+    <ion-list no-lines>
+        <ion-item class="animated slideInRight" *ngFor="let faq of faqs" [ngClass]="faq.id == curFaqId ? 'active' : '' " (click)="expandFaq(faq)">
+            <h2 class="d-flex">{{faq.title}}
+                <ion-icon class="material-icons end">keyboard_arrow_down</ion-icon>
+            </h2>
+            <h3>{{faq.short_description}}</h3>
+            <p>{{faq.description}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>

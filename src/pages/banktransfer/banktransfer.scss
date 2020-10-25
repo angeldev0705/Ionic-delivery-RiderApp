@@ -1,0 +1,48 @@
+page-banktransfer {
+  .header.theme_header {
+    padding-bottom: 20px;
+
+    .toolbar .title .toolbar-title p {
+      margin-top: 2px;
+    }
+  }
+
+  //	.list {
+  //		h2 {
+  //			margin: 0;
+  //			font-size: 1.6rem;
+  //			font-weight: 500;
+  //			padding-bottom: 16px;
+  //		}
+  //
+  //		&.form {
+  //			padding-top: 28px;
+  //			border-radius: 0;
+  //			margin: 0 auto;
+  //			width: calc(100% - 61px);
+  //			background: none;
+  //			margin-bottom: -10px;
+  //
+  //			.form_container {
+  //				border-radius: 10px;
+  //				overflow: hidden;
+  //			}
+  //
+  //			.item {
+  //				background: $info_light !important;
+  //
+  //				ion-label {
+  //					margin: 0;
+  //				}
+  //			}
+  //		}
+  //	}
+  .form {
+    padding: 0 25px 9px 25px;
+    background: darken($item-bg, 2%) !important;
+  }
+  .transfer_amount {
+    padding-top: 7px;
+    background: darken($item-bg, 10%) !important;
+  }
+}

@@ -1,0 +1,210 @@
+<ion-menu *ngIf="rtlSide == 'left'" side="left" [content]="content" (ionOpen)="menuOpened()">
+	<ion-content class="bg-color">
+		<ion-list no-lines>
+			<ion-item *ngIf="!profileMe" menuClose (click)="createProfile()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">person_add</ion-icon>
+				</ion-avatar>
+				<h2>{{'create_profile' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="home()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">home</ion-icon>
+				</ion-avatar>
+				<h2>{{'home' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="my_trips()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">directions_car</ion-icon>
+				</ion-avatar>
+				<h2>{{'my_rides' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="reviews()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">star_rate</ion-icon>
+				</ion-avatar>
+				<h2>{{'my_ratings' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="insight()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">local_play</ion-icon>
+				</ion-avatar>
+				<h2>{{'insight' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="wallet()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">account_balance_wallet</ion-icon>
+				</ion-avatar>
+				<h2>{{'wallet' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="promo_code()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">local_offer</ion-icon>
+				</ion-avatar>
+				<h2>{{'promo_code' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="help()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">help</ion-icon>
+				</ion-avatar>
+				<h2>{{'faqs' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="contact_us()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">mail</ion-icon>
+				</ion-avatar>
+				<h2>{{'contact_us' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="managelanguage()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">public</ion-icon>
+				</ion-avatar>
+				<h2>{{'change_language' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="alertLogout()">
+				<ion-avatar item-start>
+					<ion-icon name="log-out"></ion-icon>
+					<!-- <ion-icon class="material-icons">location_on</ion-icon> -->
+				</ion-avatar>
+				<h2>{{'logout_title' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="config.demoMode" menuClose (click)="developedBy()" no-lines>
+				<div class="div-logo">
+					<h4 class="text-white-dev">{{'developed_by' | translate}}</h4>
+					<img class="img-logo" src="assets/imgs/logo_vt_white.png" alt="">
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<ion-footer no-border *ngIf="profileMe">
+		<div class="profile_box d-flex" menuClose (click)="my_profile()">
+			<div class="profile_img center_img">
+				<img *ngIf="!profileMe.user.image_url || !profileMe.user.image_url.length"
+					src="assets/imgs/empty_dp.png" class="crop_img">
+				<img *ngIf="profileMe.user.image_url && profileMe.user.image_url.length"
+					data-src="{{profileMe.user.image_url}}" class="crop_img">
+			</div>
+			<div class="profile_details">
+				<h2>{{profileMe.user.name}}</h2>
+				<p *ngIf="profileMe.vehicle_type">{{profileMe.vehicle_type.title}}</p>
+				<ion-badge>
+					{{profileMe.user.ratings}}
+					<ion-icon class="material-icons">star</ion-icon>
+				</ion-badge>
+			</div>
+		</div>
+		<ion-toolbar>
+			<button ion-button menuToggle>
+				<ion-icon class="material-icons">clear</ion-icon>
+			</button>
+			<ion-title></ion-title>
+		</ion-toolbar>
+	</ion-footer>
+</ion-menu>
+
+<ion-menu *ngIf="rtlSide == 'right'" side="right" [content]="content" (ionOpen)="menuOpened()">
+	<ion-content class="bg-color">
+		<ion-list no-lines>
+			<ion-item *ngIf="!profileMe" menuClose (click)="createProfile()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">person_add</ion-icon>
+				</ion-avatar>
+				<h2>{{'create_profile' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="home()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">home</ion-icon>
+				</ion-avatar>
+				<h2>{{'home' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="my_trips()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">directions_car</ion-icon>
+				</ion-avatar>
+				<h2>{{'my_rides' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="reviews()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">star_rate</ion-icon>
+				</ion-avatar>
+				<h2>{{'my_ratings' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="insight()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">local_play</ion-icon>
+				</ion-avatar>
+				<h2>{{'insight' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="wallet()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">account_balance_wallet</ion-icon>
+				</ion-avatar>
+				<h2>{{'wallet' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="promo_code()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">local_offer</ion-icon>
+				</ion-avatar>
+				<h2>{{'promo_code' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="help()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">help</ion-icon>
+				</ion-avatar>
+				<h2>{{'faqs' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="profileMe" menuClose (click)="contact_us()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">mail</ion-icon>
+				</ion-avatar>
+				<h2>{{'contact_us' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="managelanguage()">
+				<ion-avatar item-start>
+					<ion-icon class="material-icons">public</ion-icon>
+				</ion-avatar>
+				<h2>{{'change_language' | translate}}</h2>
+			</ion-item>
+			<ion-item menuClose (click)="alertLogout()">
+				<ion-avatar item-start>
+					<ion-icon name="log-out"></ion-icon>
+					<!-- <ion-icon class="material-icons">location_on</ion-icon> -->
+				</ion-avatar>
+				<h2>{{'logout_title' | translate}}</h2>
+			</ion-item>
+			<ion-item *ngIf="config.demoMode" menuClose (click)="developedBy()" no-lines>
+				<div class="div-logo">
+					<h4 class="text-white-dev">{{'developed_by' | translate}}</h4>
+					<img class="img-logo" src="assets/imgs/logo_vt_white.png" alt="">
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<ion-footer no-border *ngIf="profileMe">
+		<div class="profile_box d-flex" menuClose (click)="my_profile()">
+			<div class="profile_img center_img">
+				<img *ngIf="!profileMe.user.image_url || !profileMe.user.image_url.length"
+					src="assets/imgs/empty_dp.png" class="crop_img">
+				<img *ngIf="profileMe.user.image_url && profileMe.user.image_url.length"
+					data-src="{{profileMe.user.image_url}}" class="crop_img">
+			</div>
+			<div class="profile_details">
+				<h2>{{profileMe.user.name}}</h2>
+				<p *ngIf="profileMe.vehicle_type">{{profileMe.vehicle_type.title}}</p>
+				<ion-badge>
+					{{profileMe.user.ratings}}
+					<ion-icon class="material-icons">star</ion-icon>
+				</ion-badge>
+			</div>
+		</div>
+		<ion-toolbar>
+			<button ion-button menuToggle>
+				<ion-icon class="material-icons">clear</ion-icon>
+			</button>
+			<ion-title></ion-title>
+		</ion-toolbar>
+	</ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

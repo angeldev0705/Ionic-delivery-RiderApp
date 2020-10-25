@@ -1,0 +1,44 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <img src="assets/imgs/qmoney.png">
+            <h2>{{'enter_bank_details' | translate}}</h2>
+            <p>{{'you_will_get_all_your_payment_in_this_bank_account' | translate}}</p>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg-color">
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{'account_number' | translate}}</ion-label>
+                <ion-input type="text" value="5886 1121 2254 2142"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>{{'bank_name' | translate}}</ion-label>
+                <ion-input type="text" value="Bnak of New Yourk"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>{{'bank_code' | translate}}</ion-label>
+                <ion-input type="text" value="BONY12124"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content> 
+<ion-footer no-border>
+    <ion-row>
+        <ion-col col-6 no-padding>
+            <button ion-button full no-margin text-uppercase clear (click)="home()" class="btn">{{'skip' | translate}}</button>
+        </ion-col>
+        <ion-col col-6 no-padding>
+            <button ion-button full no-margin text-uppercase class="btn" (click)="home()">{{'add_bank' | translate}}</button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

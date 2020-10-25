@@ -1,0 +1,100 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <h2>{{'sign_up_now' | translate}}</h2>
+            <p>{{'enter_required_information' | translate}}</p>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+    <div class="form">
+        <div class="img_box center_img" (click)="pickImage()">
+            <ion-icon *ngIf="!signUpRequest.image_url || !signUpRequest.image_url.length" class="material-icons">
+                photo_camera
+            </ion-icon>
+            <img *ngIf="signUpRequest.image_url && signUpRequest.image_url.length" data-src="{{signUpRequest.image_url}}">
+        </div>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{'select_country' | translate}}</ion-label>
+                <ion-select [(ngModel)]="countryCode" interface="popover" multiple="false" class="text-thime">
+                    <ion-option [value]="country.callingCodes[0]" *ngFor="let country of countries">{{country.name}}
+                    </ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'mobile_number' | translate}}</ion-label>
+                <ion-input type="tel" [(ngModel)]="phoneNumber"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'enter_full_name' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="signUpRequest.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'enter_email_id' | translate}}</ion-label>
+                <ion-input type="email" [(ngModel)]="signUpRequest.email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'password' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="signUpRequest.password"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label class="text-grey" floating>{{'password_confirm' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="passwordConfirm"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <!-- <div class="form car_info">
+        <ion-list no-lines>
+            <h2>{{'car_info' | translate}}</h2>
+            <ion-item>
+                <ion-label>{{'car_category' | translate}}</ion-label>
+                <ion-select [(ngModel)]="car_category" placeholder="{{'select_car_category' | translate}}">
+                    <ion-option value="1">Mini</ion-option>
+                    <ion-option value="2">Micro</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{'car_brand' | translate}}</ion-label>
+                <ion-select [(ngModel)]="car_brand" placeholder="{{'select_car_brand' | translate}}">
+                    <ion-option value="1">Skoda</ion-option>
+                    <ion-option value="2">Mitsubishi</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{'car_model' | translate}}</ion-label>
+                <ion-select [(ngModel)]="gaming" placeholder="{{'select_car_model' | translate}}">
+                    <ion-option value="nes">Skoda Laura</ion-option>
+                    <ion-option value="n64">Mitsubishi Pajero</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{'vehicle_number' | translate}}</ion-label>
+                <ion-input type="text" placeholder="{{'enter_vehicle_number' | translate}}"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div> -->
+
+
+    <!-- <div class="form car_info document">
+        <ion-list no-lines>
+            <h2>{{'document' | translate}}</h2>
+            <ion-item>
+                <ion-label>{{'id_verification' | translate}}</ion-label>
+                <ion-input type="text" placeholder="{{'upload_verification_doc' | translate}}"></ion-input>
+                <ion-icon class="material-icons" item-end>get_app</ion-icon>
+            </ion-item>
+        </ion-list>
+    </div> -->
+</ion-content>
+<ion-footer no-border>
+    <button ion-button full no-margin text-uppercase class="btn" (click)="requestSignUp()">
+        {{'sign_up' | translate}}
+    </button>
+</ion-footer>

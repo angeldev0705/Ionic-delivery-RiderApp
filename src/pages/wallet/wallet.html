@@ -1,0 +1,61 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <p>{{'available_qmoney_amount' | translate}}</p>
+            <h2>{{currency}} {{user.wallet.balance}}</h2>
+        </ion-title>
+    </ion-navbar>
+    <ion-row>
+        <ion-col *ngIf="user.wallet && user.wallet.balance" col-12 no-padding>
+            <button ion-button full no-margin text-uppercase clear class="btn" (click)="sendMoney()">
+                {{'send_to_bank' | translate}}
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-header>
+<ion-content class="bg-color">
+    <div class="empty-view" *ngIf="!walletHistory || !walletHistory.length">
+        <div style="text-align:center">
+            <img src="assets/imgs/empty_notification.png" alt="no offers" />
+            <span style="color:#9E9E9E; font-weight:bold;">
+                {{'empty_wallet' | translate}}
+            </span>
+        </div>
+    </div>
+    <ion-list no-lines class="animated slideInUp delay_3">
+        <h2 *ngIf="walletHistory && walletHistory.length" class="d-flex">
+            {{'recent_wallet_transactions' | translate}}
+        </h2>
+        <ion-item class="animated slideInRight" *ngFor="let wh of walletHistory"
+            [ngClass]="(wh.status && wh.status == 'debit') ? 'spend' : 'add' " (click)="tripInfo(wh.ride)">
+            <div class="item_header d-flex">
+                <div *ngIf="wh.ride_id" class="img_box center_img">
+                    <img *ngIf="wh.ride && wh.ride.user.image_url" data-src="{{wh.ride.user.image_url}}"
+                        class="crop_img">
+                    <img *ngIf="!wh.ride || !wh.ride.user.image_url" src="assets/imgs/empty_dp.png" class="crop_img">
+                </div>
+                <div *ngIf="!wh.ride_id" class="img_box center_img">
+                    <img src="assets/imgs/logo.png" class="crop_img">
+                </div>
+                <div class="profile_details">
+                    <h3 class="d-flex">
+                        {{wh.title}}
+                        <span class="end">{{currency}} {{wh.amount}}</span>
+                    </h3>
+                    <h4 class="d-flex">{{wh.created_at}}
+                        <span *ngIf="wh.ride_id" class="end d-flex">
+                            {{'ride_info' | translate}}
+                            <ion-icon class="material-icons">navigate_next</ion-icon>
+                        </span>
+                    </h4>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

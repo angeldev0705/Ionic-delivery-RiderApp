@@ -1,0 +1,41 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            <h2>{{'enter_promo_code' | translate}}</h2>
+            <p>{{'enter_promo_code_text_1' | translate}}<br>{{'enter_promo_code_text_2' | translate}}</p>
+        </ion-title>
+    </ion-navbar>
+
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{'enter_code_here' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="referralCode"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-header>
+
+<ion-content class="bg-color">
+    <div class="btn-box">
+        <button ion-button full no-margin text-uppercase class="btn" (click)="verifyReferral()">
+            {{'apply_promo_code' | translate}}
+        </button>
+    </div>
+    <div class="referral_code_text_box">
+        <h1 text-center>{{'share_referral_code' | translate}}</h1>
+        <p text-center>{{'share_referral_code_msg' | translate}} {{currency}} {{referAmount}}</p>
+    </div>
+    <div class="your_refrral_code">
+        <p text-center>{{'your_refrral_code_tab_to_copy' | translate}}</p>
+        <h2 text-center (click)="copyCode()">{{userMe.refer_code}}</h2>
+    </div>
+</ion-content>
+<ion-footer no-border class="bg-color">
+    <button ion-button full clear no-margin text-uppercase class="btn" (click)="share()">
+        {{'share_code' | translate}}
+    </button>
+</ion-footer>

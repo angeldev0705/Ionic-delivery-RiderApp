@@ -1,0 +1,69 @@
+page-promo_code {
+  .header {
+    .form {
+      background: none;
+      padding: 0px 14px 28px 14px;
+
+      .list {
+        margin: 0;
+
+        .item {
+          border-bottom: 1px solid $info !important;
+          padding: 0;
+          padding-bottom: 8px;
+          margin-bottom: 0;
+
+          .item-inner .label {
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+
+  .scroll-content {
+    background: $item-bg;
+
+    p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: $info;
+      margin: 0;
+      letter-spacing: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  .button.btn {
+    height: 55px;
+  }
+
+  .referral_code_text_box {
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    padding-top: 50px;
+
+    h1 {
+      color: $white;
+      margin: 0;
+      font-size: 2.85rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+  }
+
+  .your_refrral_code {
+    width: calc(100% - 60px);
+    margin: 0 auto;
+    margin-top: 40px;
+
+    h2 {
+      color: $white;
+      border: 1px dotted $info;
+      padding: 14px 0px 14px 0;
+      font-size: 2.1rem;
+      font-weight: 500;
+      background: darken($item-bg, 5%);
+    }
+  }
+}

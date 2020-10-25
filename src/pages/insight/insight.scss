@@ -1,0 +1,327 @@
+page-insight {
+  .header .toolbar {
+    .toolbar-content {
+      position: absolute;
+      width: 100%;
+      left: 0;
+
+      .title .toolbar-title {
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .card {
+    border-radius: 8px;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    background: $item_bg;
+    margin-bottom: 15px;
+
+    .item {
+      padding: 16px 8px;
+      background: none;
+      min-height: unset;
+
+      .item-inner {
+        padding: 0;
+
+        .select {
+          padding: 0;
+          max-width: unset;
+
+          .select-text {
+            color: $theme-color;
+            padding: 0 10px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+            opacity: 1;
+          }
+
+          .select-icon {
+            width: 17px;
+
+            .select-icon-inner {
+              color: $theme-color;
+            }
+          }
+        }
+      }
+    }
+
+    .row {
+      padding: 0 15px;
+
+      h2 {
+        margin: 0;
+        color: $white;
+        font-size: 1.8rem;
+        padding-bottom: 5px;
+      }
+
+      h3 {
+        margin: 0;
+        color: $info;
+        font-weight: 500;
+        font-size: 1.45rem;
+      }
+    }
+
+    .card_containt {
+      padding-top: 16px;
+
+      h1 {
+        color: $white;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        letter-spacing: 1.4px;
+        font-weight: 500;
+        padding: 0 19px;
+
+        padding-bottom: 11px;
+      }
+
+      h3 {
+        margin: 0;
+        color: $theme-color;
+        padding: 0;
+        padding: 17px 19px;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
+      }
+    }
+
+    &.rating_graph {
+      .card_containt {
+        padding: 0 10px;
+
+        ion-row {
+          align-items: center;
+          margin: 0 -5px;
+          padding: 0;
+
+          .col {
+            padding: 0 5px;
+
+            h2 {
+              margin: 0;
+              color: $info;
+              font-weight: 500;
+              font-size: 1.3rem;
+              padding-bottom: 15px;
+
+              .badge {
+                padding: 0;
+                border-radius: 50px;
+                text-align: center;
+                font-weight: 400;
+                width: 46px;
+                height: 21px;
+                font-size: 1.2rem;
+                line-height: 21px;
+                min-width: 46px;
+
+                ion-icon {
+                  font-size: 1.1rem;
+                  position: relative;
+                  top: 2px;
+                }
+              }
+
+              strong {
+                color: $white;
+                padding: 0 5px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+
+      .card_header {
+        padding: 19px;
+
+        h2 {
+          color: $white;
+          margin: 0;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          letter-spacing: 1.4px;
+          font-weight: 500;
+          padding-bottom: 10px;
+        }
+
+        p {
+          margin: 0;
+          color: $info;
+          font-weight: 500;
+          font-size: 1.45rem;
+          margin: 0 -9px;
+
+          .badge {
+            padding: 0;
+            border-radius: 50px;
+            text-align: center;
+            background: $green_color;
+            font-weight: 400;
+            width: 53px;
+            height: 24px;
+            font-size: 1.2rem;
+            line-height: 24px;
+            margin: 0px 9px;
+
+            ion-icon {
+              font-size: 1.1rem;
+              position: relative;
+              top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .graph_container {
+    position: relative;
+    overflow: hidden;
+    //	padding: 0 21px;
+    min-height: 186px;
+    padding-bottom: 30px;
+
+    .text_container {
+      position: absolute;
+      bottom: -22px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      p {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding-bottom: 10px;
+        color: $white;
+
+        span {
+          display: block;
+          color: $white;
+          width: fit-content;
+          font-size: 1.2rem;
+          font-weight: 400;
+          min-width: 40px;
+          text-align: right;
+          z-index: 999;
+          position: relative;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -4px;
+          bottom: 0;
+          right: 0;
+          margin: 0 auto;
+          width: calc(100% - 0px);
+          height: 1px;
+          background: $bg-color;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .graph {
+      position: absolute;
+      bottom: 0px;
+      right: 0;
+      width: calc(100% - 40px);
+      height: calc(100% - 16px);
+      display: flex;
+      align-items: flex-end;
+      z-index: 9999;
+      overflow-x: scroll;
+      white-space: nowrap;
+      padding-bottom: 8px;
+
+      .bar_box {
+        display: inline-block;
+        position: relative;
+        height: calc(100% - 11px);
+        margin: 0 5px;
+        width: 30px;
+        min-width: 30px;
+        overflow: visible !important;
+
+        h4 {
+          color: $white;
+          font-size: 1.2rem;
+          font-weight: 400;
+          text-align: center;
+          margin: 0;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+        }
+
+        .bar {
+          position: absolute;
+          bottom: 8px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          z-index: 999;
+          width: 100%;
+          max-height: calc(100% - 1px);
+          transition: height 4s !important;
+
+          h5 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 99;
+            color: $white;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-align: center;
+            width: fit-content;
+            margin: 0 auto;
+            border-radius: 4px;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 11px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: calc(100% - 25px);
+            margin: auto;
+            background: linear-gradient(180deg, rgba(253, 176, 54, 1) 35%, rgba(53, 53, 53, 0.8886905103838411) 100%);
+          }
+        }
+
+        &:first-child {
+          margin-left: 10px;
+        }
+
+        &:last-child {
+          margin-right: 10px;
+        }
+
+        &.bg_white {
+          .bar::before {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 35%, rgba(53, 53, 53, 0.8886905103838411) 100%);
+          }
+        }
+      }
+    }
+  }
+}

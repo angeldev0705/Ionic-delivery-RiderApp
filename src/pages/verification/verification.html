@@ -1,0 +1,35 @@
+<ion-header class="theme_header">
+    <ion-navbar>
+        <!-- <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button> -->
+        <ion-title>
+            <h2>{{'enter' | translate}}<br>{{'verification_code' | translate}}</h2>
+            <p>{{'enter_code_we_sent_on_given_number' | translate}}</p>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-color">
+    <div id="recaptcha-container"></div>
+    <div class="form">
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>{{'enter_code' | translate}}</ion-label>
+                <ion-input type="number" [(ngModel)]="otp"></ion-input>
+            </ion-item>
+        </ion-list>
+    </div>
+    <ion-row>
+        <ion-col col-6 no-padding>
+            <button ion-button full no-margin text-uppercase clear class="btn" (click)="sendOTP()">
+                {{'not_received' | translate}}
+            </button>
+        </ion-col>
+        <ion-col col-6 no-padding>
+            <button ion-button full no-margin text-uppercase class="btn" (click)="verify()">
+                {{'continue' | translate}}
+            </button>
+        </ion-col>
+    </ion-row>
+</ion-content>

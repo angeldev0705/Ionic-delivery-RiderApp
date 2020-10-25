@@ -1,0 +1,86 @@
+<ion-content class="bg-color">
+	<!-- <div class="map">
+        <img src="assets/imgs/map.png">
+    </div> -->
+	<ion-card>
+		<ion-header>
+			<ion-navbar>
+				<button ion-button menuToggle>
+					<ion-icon name="menu"></ion-icon>
+				</button>
+			</ion-navbar>
+		</ion-header>
+
+		<div class="container">
+			<div class="profile">
+				<ion-row>
+					<ion-col col-6 class="profile_details">
+						<div class="img_box center_img">
+							<img *ngIf="!ride.user.image_url || !ride.user.image_url.length" src="assets/imgs/empty_dp.png" class="crop_img">
+							<img *ngIf="ride.user.image_url && ride.user.image_url.length" data-src="{{ride.user.image_url}}" class="crop_img">
+						</div>
+						<h1>{{ride.user.name}}</h1>
+						<ion-badge>
+							{{ride.user.ratings}}
+							<ion-icon class="material-icons">star</ion-icon>
+						</ion-badge>
+						<!--
+                        <div class="cab_details">
+                            <h3>{{ride.driver.vehicle_details_array[0]}}</h3>
+                            <h4>{{ride.driver.vehicle_number}}</h4>
+                        </div>
+-->
+					</ion-col>
+
+					<ion-col col-6 class="ride_fare_details">
+						<h2>{{'ride_fare' | translate}}</h2>
+						<h3 *ngIf="!ride.final_fare || ride.final_fare==0">{{currency}} {{ride.estimated_fare}}</h3>
+						<h3 *ngIf="ride.final_fare && ride.final_fare>0">{{currency}} {{ride.final_fare}}</h3>
+						<h2>{{'payment_via' | translate}}</h2>
+						<h4 class="d-flex">
+							<ion-icon class="material-icons">account_balance_wallet</ion-icon>
+							{{ride.payment_method.title}}
+						</h4>
+					</ion-col>
+				</ion-row>
+			</div>
+
+			<div class="ride_info">
+				<h2 class="d-flex">
+					{{'ride_info' | translate}}
+					<span class="end">
+						<strong>{{ride.estimated_distance}} {{distanceUnit}}</strong>
+						<!-- ({{rideTime}}) -->
+					</span>
+				</h2>
+
+				<div class="d-flex item_box">
+					<ion-icon class="material-icons">location_on</ion-icon>
+					<p>{{ride.address_from}}</p>
+				</div>
+				<div class="d-flex item_box">
+					<ion-icon class="material-icons">near_me</ion-icon>
+					<p>{{ride.address_to}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="container form">
+			<h2 text-center>{{'rate_your_ride' | translate}} </h2>
+			<div class="rating_icons d-flex" text-center>
+				<ion-icon [ngClass]="rateRequest.rating>=1 ? 'material-icons  active' : 'material-icons'" (click)="setRating(1)">star_rate</ion-icon>
+				<ion-icon [ngClass]="rateRequest.rating>=2 ? 'material-icons  active' : 'material-icons'" (click)="setRating(2)">star_rate</ion-icon>
+				<ion-icon [ngClass]="rateRequest.rating>=3 ? 'material-icons  active' : 'material-icons'" (click)="setRating(3)">star_rate</ion-icon>
+				<ion-icon [ngClass]="rateRequest.rating>=4 ? 'material-icons   active' : 'material-icons'" (click)="setRating(4)">star_rate</ion-icon>
+				<ion-icon [ngClass]="rateRequest.rating==5 ? 'material-icons  active' : 'material-icons'" (click)="setRating(5)">star_rate</ion-icon>
+			</div>
+			<ion-list no-lines>
+				<ion-item>
+					<ion-textarea type="text" [(ngModel)]="rateRequest.review" placeholder="{{'add_comment' | translate}}"></ion-textarea>
+				</ion-item>
+			</ion-list>
+		</div>
+		<button ion-button full no-margin class="btn" (click)="submitRating()">
+			{{'submit_review' | translate}}
+		</button>
+	</ion-card>
+</ion-content>
